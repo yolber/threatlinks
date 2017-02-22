@@ -1,0 +1,23 @@
+<div class="panel" style="padding-bottom:10px">
+    <div class="panel-header" style="padding-left: 12px;">
+    Alert List
+    </div>
+    <div class="panel-subtitle">
+        Details of triggered alerts for this entity.
+    </div>
+    <div class="body sub-panel">
+        <table>
+            <thead>
+                <tr>
+                    <th ng-repeat="element in threatList.config.threatList" ng-click="threatList.changeSort(element.name)">
+                        {{element.name | displayNames:threatList.displayNamesConfig}}
+                        <span class="arrow transform" ng-show="threatList.sortBy === element.name"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(id, event) in threatList.events" threat-list-tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

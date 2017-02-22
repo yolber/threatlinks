@@ -1,0 +1,24 @@
+<div class="metadata-container {{phase.class}}" ng-repeat="group in metadataCtrl.metadata" ng-class="{active: group.active, disabled: group.disabled, highlight: group.highlight}">
+    <div class="metadata-head {{phase.class}} container-padding" ng-class="{border: metadataCtrl.visible[group.name], disabled: group.disabled}" ng-mouseover="metadataCtrl.highlightGroup(group.name)" ng-mouseleave="metadataCtrl.resetHighlight();">
+        <span class="arrow" ng-click="metadataCtrl.visible[group.name]=!metadataCtrl.visible[group.name]" ng-class="{transform: metadataCtrl.visible[group.name], white: group.active}"></span>
+        <span class="metadata-head-name"> <!--ng-click="metadataCtrl.filterBy(group.name)">-->
+            
+            {{group.name | displayNames}}
+            
+        </span>
+        <span class="metadata-head-count">{{group.count}}</span> 
+    </div>
+    <div class="metadata-details" ng-show="metadataCtrl.visible[group.name]">
+        <div class="metadata-details-container" ng-repeat="selection in group.elements">
+            <div class="mdc-head container-padding">
+                {{selection.key | displayNames}}
+            </div>
+            <div class="mdc-body">
+                <div class="mdc-body-element container-padding" ng-repeat="(id, count) in selection.elements" ng-mouseover="metadataCtrl.highlightGroup(id, selection.key)" ng-mouseleave="metadataCtrl.resetHighlight();">
+                    {{id}}
+                    <span style="display:inline;">{{count}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="panel" style="padding-bottom:10px">
+<div class="panel-header">
+    Features
+</div>
+<div class="panel-subtitle">
+    Computed network activity features for this entity.
+</div>
+<div class="body">
+    <div class="features" ng-repeat="feature in features.features">
+    	
+  		
+        <div class="name">
+            {{feature.name | displayNames}} : {{feature.name}}
+        </div>
+            
+        <div class="number-circle" style="float:right;margin-right:8px;">{{feature.max >= 0 ? feature.max : 'N/A'}}</div>
+            
+        
+        
+            <feature-graph  data="feature.data" max="feature.max"></feature-graph>
+        
+        
+    </div>
+</div>
+</div>

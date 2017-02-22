@@ -1,0 +1,65 @@
+<div class="raw-data">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-10" >
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Netflow" ng-click="rawData.getNetflowData(false)">
+                <md-content class="md-padding">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th ng-repeat="element in rawData.config.netflowData">
+                                    {{element.name | displayNames}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(id, event) in rawData.netEvents" raw-data-tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+            <md-tab label="DNS records" ng-click="rawData.getDnsData(false)">
+                <md-content class="md-padding">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th ng-repeat="element in rawData.config.dnsData">
+                                    {{element.name | displayNames}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(id, event) in rawData.dnsEvents" raw-data-tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+            <md-tab label="HTTP records" ng-click="rawData.getWebproxyData(false)">
+                <md-content class="md-padding">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th ng-repeat="element in rawData.config.webproxyData">
+                                    {{element.name | displayNames}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(id, event) in rawData.webEvents" raw-data-tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+    </div>
+    
+
+</div>
+
+       

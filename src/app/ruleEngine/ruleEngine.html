@@ -1,0 +1,204 @@
+<div class="row" style="padding-top:30px;">
+    <div id="sidebar" class="col-md-2">
+        <div class="menu-item" ng-click="$ctrl.initializePage()">List Modules</div>
+        <div class="menu-item" ng-click="$ctrl.addNewRule = true">Add Module</div>
+        <div class="menu-item" ng-click="$ctrl.showExecutionConfirmation()">Force Execution</div>
+    </div>
+
+    <div id="content" class="col-md-10">
+        <div class="row">
+            <div id="rules" class="col-md-7" style="background-color:white;">
+                <div class="headline">Module Management</div>
+                <div class="new-rule" ng-show="$ctrl.addNewRule">
+                <span class="new-rule-icon"></span><span class="new-rule-heading">Add new Module</span>
+                    <div class="select-import">
+                        <span class="import-button" ng-click="$ctrl.importJSON = true; $ctrl.importForm = false; $ctrl.hasImportError = false">Import JSON</span>
+                        <span class="import-button" ng-click="$ctrl.importForm = true; $ctrl.importJSON = false; $ctrl.hasImportError = false" >Type manually</span>
+                    </div>
+                    <div class="import-json" ng-show="$ctrl.importJSON">
+                        <form>
+                            
+                            <label>
+                                <input type="file" ng-model="file.data" file-select="data" ng-click="file.data = null" file-loaded="$ctrl.jsonUploadFinished()" name="fileUploader">
+                                <span>Select file</span></label>
+                                <span class="btn-submit" ng-show="isFileUploaded" ng-click="$ctrl.addModule()">Add {{$ctrl.newModuleName}}</span>
+                        </form>
+                        
+                    </div>
+                    <div class="import-form" ng-show="$ctrl.importForm">
+                        <form ng-submit="$ctrl.submitForm()">
+                            <table>
+                                <tr>
+                                    <td>microAnalyticsId</td>
+                                    <td><input type="text" ng-model="newModule.microAnalyticsId" required/></td>
+                                </tr>
+                                <tr>
+                                    <td>Attack Phase</td>
+                                    <td><input type="text" ng-model="newModule.threatPhase" required/></td>
+                                </tr>
+                                <tr>
+                                    <td>Analytics Type</td>
+                                    <td><input type="text" ng-model="newModule.microAnalyticsType" required/></td>
+                                </tr>
+                                <tr>
+                                    <td>Description</td>
+                                    <td><input type="text" ng-model="newModule.description" required/></td>
+                                </tr>
+                                <tr>
+                                    <td>Priority</td>
+                                    <td><input type="number" ng-model="newModule.priority"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Execution Interface</td>
+                                    <td><input type="text" ng-model="newModule.analyticsExecutionInterface"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Execution Engine</td>
+                                    <td><input type="text" ng-model="newModule.analyticsEngine"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Input Data Source</td>
+                                    <td><input type="text" ng-model="newModule.inputDataSource" required/></td>
+                                </tr>
+                                <tr>
+                                    <td>Micro Analytics Representation</td>
+                                    <td><input type="text" ng-model="newModule.microAnalyticsRepresentation"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Micro Analytics Definition</td>
+                                    <td><input type="text" ng-model="newModule.microAnalyticsDefinition" required/></td>
+                                </tr>
+                                <tr>
+                                    <td>Column indices</td>
+                                    <td class="small-input"><input type="number" ng-model="newModule.microAnalyticsResults.userId" placeholder="userId"/><input type="number" ng-model="newModule.microAnalyticsResults.systemId" placeholder="systemId"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Timestamp Data</td>
+                                    <td class="small-input"><select ng-model="newModule.timestampData.timestampType">
+                                        <option value="basic">basic</option>
+                                        <option value="finegrain">finegrain</option>
+                                        <option value="multipleDays">multiple Days</option>
+                                        <option value="specificTime">specific time</option>
+                                    </select><input type="number" ng-model="newModule.timestampData.hoursBackShift" placeholder="hours Back"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit"></td>
+                                </tr>
+                            </table>
+                        </form>      
+                    </div>
+                    <div class="import-status" ng-show="$ctrl.showImportStatus">{{$ctrl.importStatus}}</div>
+                </div>
+                <div class="rule" ng-show="$ctrl.areRulesLoaded" ng-repeat="module in $ctrl.modules">       
+                    
+                    <span ng-class="showDetails ? 'arrow-down' : 'arrow-icon'"></span>
+                    
+                    <a href="" ng-click="showDetails = ! showDetails">{{module.microAnalyticsId}} - {{module.threatPhase}} - {{module.microAnalyticsType}}</a>
+
+                    <span class="toolbar">
+                        <span class="btn-delete" ng-click="$ctrl.showDeletionPrompt(module)">
+                            <md-tooltip md-direction="bottom">Delete</md-tooltip>
+                        </span>
+                        <span ng-click="$ctrl.exportModule(module)" class="btn-export">
+                            <md-tooltip md-direction="bottom">Export</md-tooltip>
+                        </span>
+                    </span>
+                    
+
+                    <table ng-show="showDetails">
+                         <tr>
+                            <td>Attack Phase</td>
+                            <td>{{module.threatPhase}}</td>
+                        </tr>
+                         <tr>
+                            <td>Analytics Type</td>
+                            <td>{{module.microAnalyticsType}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{module.description}}</td>
+                        </tr>
+                      <tr>
+                            <td>Priority</td>
+                            <td>
+                              <span ng-hide="updatePriority" ng-click="updatePriority = true"><span class="updatable-arrow" ></span>{{module.priority}}</span> 
+                              <span ng-show="updatePriority"><form ng-submit="updatePriority = false; $ctrl.saveModule(module)"><input ng-model="module.priority" type="number"/><input type="submit" value=""></form></span>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>Execution Interface</td>
+                            <td>{{module.analyticsExecutionInterface}}</td>
+                        </tr>            
+                         <tr>
+                            <td>Analytics Engine</td>
+                            <td>{{module.analyticsEngine}}</td>
+                        </tr>
+                         <tr>
+                            <td>Input Data Source</td>
+                            <td>{{module.inputDataSource}}</td>
+                        </tr>
+                        <tr>
+                            <td>Output Analytics Results</td>
+                            <td>{{module.outputAnalyticsResults}}</td>
+                        </tr>
+                         <tr>
+                            <td>Micro Analytics Representation</td>
+                            <td>{{module.microAnalyticsRepresentation}}</td>
+                        </tr>
+                        <tr>
+                            <td>Micro Analytics Definition</td>
+                            <td>{{module.microAnalyticsDefinition}}</td>
+                        </tr>
+                        <tr>
+                            <td>Column index: userId</td>
+                            <td>{{module.microAnalyticsResults.userId}}</td>
+                        </tr>
+                        <tr>
+                            <td>Column index: systemId</td>
+                            <td>{{module.microAnalyticsResults.systemId}}</td>
+                        </tr>
+                        <tr>
+                            <td>Timestamp type</td>
+                            <td>{{module.timestampData.timestampType}}
+                              <span ng-show="$ctrl.showTimestampShift(module.timestampData.timestampType)"> - Backshift: {{module.timestampData.hoursBackShift}}hrs</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Last Modified</td>
+                            <td>{{module.lastModified}}</td>
+                        </tr>          
+                    </table>
+                </div>
+                <div ng-hide="$ctrl.areRulesLoaded">
+                {{$ctrl.statusMessage}}
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <div id="execution-results-container" class="col-md-5" >
+                
+                <div id="execution-confirmation" ng-show="$ctrl.confirmExecution">
+                    <div class="headline">Execution Results</div>
+                    Please set the date and time (UTC) that shall be used for the execution.
+                    <form>
+                        <md-datepicker ng-model="executionDate"></md-datepicker>
+                        <input type="time" ng-model="executionTime"/>
+                        <span class="btn-submit" ng-click="$ctrl.executeRules()">Execute</span>
+                    </form>
+                </div>
+                <div class="spinner-container" ng-show="$ctrl.isExecuting">
+                    <div class="spinner"></div>
+                </div>
+                <div id="execution-results"  ng-show="$ctrl.hasExecutionResults">
+                    <div ng-repeat="module in $ctrl.executionResults">
+                        <div ng-repeat="message in module" ng-class="message.status">
+                            {{message.message}}
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
