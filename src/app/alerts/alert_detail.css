@@ -1,0 +1,123 @@
+#main{
+   color: rgba(53, 53, 53, 1);
+   background-color: #dedede;
+   font-size:12px;
+    
+}
+
+.static-header {
+    background-color:  rgba(53, 53, 53, 1);
+    height: 60px;
+
+}
+
+.header-title {
+    margin-left:20px;
+    display: inline-block;
+}
+
+#spider {
+  background: url('/app/icons/alerts.png') no-repeat -73px -179px;
+  width: 58px;
+  height: 58px; 
+  float: left;
+  
+}
+
+.title {
+    background-image: url(/app/icons/spider_web_smaller.png);
+    color: rgba(183, 178, 178, 1);
+    width:230px;
+    height: 58px; 
+    font-size: 30px;
+    font-weight: bold;
+    float: left;
+    padding-top: 15px;
+    padding-left: 35px;
+}
+
+.panel {
+    background-color: rgba(183, 178, 178, 1) !important;
+    padding-left:5px;
+    padding-right:5px;
+    margin-left:5px;
+    margin-top:10px;
+    border-radius: 0 !important;
+    font-size: 11px;
+    padding-bottom: 10px;
+
+}
+
+.sub-panel {
+    background-color: #dedede;
+    padding-left:5px;
+    margin-right:5px;
+    margin-left:5px;
+    border-radius: 0 !important;
+    margin-bottom:5px;
+    padding-bottom: 10px;
+
+}
+
+.panel-header {
+    margin-top: 10px;
+    font-size: 15px;
+    padding-bottom: 5px;
+}
+
+
+
+.panel-subtitle {
+    padding-left: 10px;
+    font-size: 10px;
+}
+
+.panel-body{
+   
+    font-size: 14px !important;
+  
+}
+
+.dc-chart g.row text {
+  fill: black;
+}
+
+#feedbackText {
+resize: none;
+}
+
+#stream-chart {
+  height: 360px;
+}
+
+#ind-chart{
+  height: 400px;
+}
+
+#multi-chart{
+  height: 400px;
+}
+
+#bubble-chart{
+  height:350px;
+}
+
+#domain-chart {
+  /*width: 1520px;*/
+  height: 355px;
+}
+#hour-chart {
+  height: 270px;
+}
+#category-chart {
+  /*width: 250px;*/
+  height: 250px;
+}
+#type-chart {
+  /*width: 250px;*/
+  height: 250px;
+}
+#score-chart {
+  /*width: 250px;*/
+  height: 250px;
+}
