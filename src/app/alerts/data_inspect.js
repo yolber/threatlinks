@@ -4,25 +4,29 @@ var url = 'http://'+ document.location.hostname + ':8080/gui/detail.html?alertID
 
 var restHostName = "hostnameInformation";
 var restAlertsforIP = "retrieveAlertDetailsByIP";
-var restAlertDetail = "retrieveAlertId";
+var restAlertDetail = "retrieveAlertId.json";
 var restAlertIPs = "retrieveAlerts";
 
 var src = '';
 
 var date_time_value, start, end;
 
-date_time_value = get_date_time();
+//date_time_value = get_date_time();
 
-var alertID = getUrlVars()["alertID"]; 
-var demo = getUrlVars()["demo"];
+var alertID ="";
+
+//var alertID = getUrlVars()["alertID"]; 
+/*var demo = getUrlVars()["demo"];
 
 if (demo != undefined) {
 
 	if (demo == "true") settings.operational = false;
 
-}
+}*/
 
-var is_controlled = false; //true if it should be controllable
+console.log("Loading alert page");
+
+/*var is_controlled = false; //true if it should be controllable
 
 
 (function () {
@@ -59,13 +63,15 @@ if(is_controlled){
 	eventManager.settings.channel = is_controlled;
 	eventManager.init();
 	eventManager.registerObserver(dateAlertObserver);
-}
+}*/
 
 
 alert_inspect();
 
 
 function alert_inspect(){
+
+	/*
 	
 	if (alertID == undefined) {
 
@@ -74,7 +80,7 @@ function alert_inspect(){
 		else return; 
 	}		
 
-	else setup_alert_page();
+	else */ setup_alert_page();
 
 
 		
@@ -117,7 +123,7 @@ function setup_detail_data_page_client(){
 
 	$('#detail-page-header').show(); $("#alert-page-header").hide();
 
-	jQuery.getJSON(build_url(restHostName, "ipAddress=" + src), function (hostInfo) {
+	$.getJSON(build_url(restHostName, "ipAddress=" + src), function (hostInfo) {
 
 		var src_display = src;
 
@@ -136,7 +142,7 @@ function setup_detail_data_page_client(){
 
 		$('#detail-page-ip').html(src_display);
 
-		jQuery.getJSON(build_url(restAlertsforIP, "srcIP=" + src), function (alerts) {
+		$.getJSON(build_url(restAlertsforIP, "srcIP=" + src), function (alerts) {
 
 			var alertsTitle = "";
 
@@ -266,7 +272,11 @@ function setup_detail_data_page_domain(){
 
 function setup_alert_page(){
 
-	jQuery.getJSON(build_url(restAlertDetail, "alertId=" + alertID), function(alert) {
+	console.log("Alert page");
+
+	$.getJSON('/app/data/' + restAlertDetail, function(alert) {
+
+	//jQuery.getJSON(build_url(restAlertDetail, "alertId=" + alertID), function(alert) {
 
 		end = alert.timestamp.split('.')[0]; start = end.split(' ')[0] + ' 00:00:00';
 
@@ -278,7 +288,7 @@ function setup_alert_page(){
 		
 		var filters = []; if (alert.hasOwnProperty("filters")) filters = alert.filters;
 
-		jQuery.getJSON(build_url(restHostName, "ipAddress=" + src), function(clientInfo) {
+	//	jQuery.getJSON(build_url(restHostName, "ipAddress=" + src), function(clientInfo) {
 
 			console.log("Got alert for src: " + src + " on " + start);
 
@@ -286,19 +296,14 @@ function setup_alert_page(){
 
 			$("#alert-id").html(alertID);
 
-			$("#alert-type").html(lookup(alert_types, "id", alertType).title);
 
-			/*
-			var type = lookup(alert_types, "id", alertType).graph;
+	//		$("#alert-type").html(lookup(alert_types, "id", alertType).title);
 
-			graphLink = "<a href='javascript:void(0);' onclick='open_tab_graphs(\""+ type + "\"" + ", \""+ date_time_value + "\"" + "); return false;'>Threat Graphs</a>";
-
-			$("#alert-graph").html(graphLink);
-			*/
+			$("#alert-type").html(alertType);
 
 			var src_display = src;
 
-			if (settings.operational) {
+	/*		if (settings.operational) {
 
 				var src_display = "<a href='https://c0041696.itcs.hp.com/APPLICATION/HOSTUSER/hostuser.php?a=1&str=" + 
 							  src + "' target='_blank'>" + src + "</a>";
@@ -312,13 +317,13 @@ function setup_alert_page(){
 					
 			}
 
-			else src_display = anonymize(src);
+			else src_display = anonymize(src);*/
 
 			$("#alert-client").html(src_display);
 
 
 			$("#alert-time").html(end.substring(0, end.length - 3) + " ");
-			$("#alert-timezone").html(settings.timeZone);
+			$("#alert-timezone").html('UTC');
 
 			/*
 			
@@ -343,11 +348,13 @@ function setup_alert_page(){
 
 				$("#alert-page-header").show(); $('#detail-page-header').hide();
 
+				//retrieveRawDNSReplies?date=2017-08-26&hour=05&minutes=59&startDate=2017-08-26%2000:00:00&endDate=2017-08-26%2005:59:59&srcIP=93.184.217.124&AlertType=BadClient-DGAConfickerAB&OperationType=retrieve&PageNum=1
+
 				render_details(src, start, end, source, filters, alertType);
 
 			//});
 				
-		});
+	//	});
 
 	});
 

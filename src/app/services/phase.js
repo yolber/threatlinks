@@ -1,6 +1,6 @@
-import NikeService from './nikeService';
+import spiderService from './spiderService';
 
-class Phase extends NikeService {
+class Phase extends spiderService {
   getPhases(cb) {
     //this.$http.get(`${this.prefix}/threatPhaseList`).then(res => {
     this.$http.get(`/app/data/threatPhaseList.json`).then(res => {

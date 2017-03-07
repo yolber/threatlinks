@@ -179,7 +179,7 @@ class ruleEngineController {
     this.scopeService.newModule = {
       priority: 0,
       analyticsExecutionInterface: 'restAPI',
-      analyticsEngine: 'nikeAE',
+      analyticsEngine: 'spiderAE',
       microAnalyticsRepresentation: 'SQL',
       timestampData: {
         timestampType: 'basic'

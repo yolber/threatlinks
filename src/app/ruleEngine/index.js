@@ -7,7 +7,7 @@ import {
 import RuleEngineService from '../services/ruleEngine';
 import fileSelect from './fileSelect';
 
-export const ruleEngineModule = 'nike.ruleEngine';
+export const ruleEngineModule = 'spider.ruleEngine';
 
 angular
   .module(ruleEngineModule, [])

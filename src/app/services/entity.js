@@ -1,6 +1,6 @@
-import NikeService from './nikeService';
+import spiderService from './spiderService';
 
-class Entity extends NikeService {
+class Entity extends spiderService {
 
   getSimilarity(entity, timestamp, cb) {
     timestamp -= new Date().getTimezoneOffset() * 60;

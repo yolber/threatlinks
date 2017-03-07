@@ -2,7 +2,8 @@ class RuleEngine {
   constructor($http, $scope) {
     this.httpService = $http;
     this.scopeService = $scope;
-    this.rootURL = 'http://threatview-as.labs.hpecorp.net:8080/AnalyticsEngine/AnalyticsServices/API/';
+    //this.rootURL = 'http://threataware-as.net:8080/AnalyticsEngine/AnalyticsServices/API/';
+    this.rootURL = 'http://localhost:3000/AnalyticsEngine/AnalyticsServices/API/';
   }
 
   /*

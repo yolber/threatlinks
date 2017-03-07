@@ -15,7 +15,7 @@ import threatList from './directives/threatList';
 import threatListTr from './directives/threatListTr';
 import variableFilter from './filter/variableFilter';
 
-export const entityModule = 'nike.entity';
+export const entityModule = 'spider.entity';
 
 angular
   .module(entityModule, [])

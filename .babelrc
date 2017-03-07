@@ -2,6 +2,10 @@
     "presets": [
         "es2015"
     ],
+     "ignore": [
+    "./app/alerts/d3.js",
+    "./app/alerts/dc.min.js"
+  	],
     "plugins": [
         ["babel-plugin-transform-builtin-extend", {
             "globals": ["Array"]

@@ -1,7 +1,7 @@
 'use strict';
 import GraphStyle from './graphStyle';
 
-function graphDirective(nikeService, $stateParams) {
+function graphDirective(spiderService, $stateParams) {
   const ref = `http://${document.location.hostname}:${document.location.port}/#/entity/`;
   return {
     restrict: 'E',
@@ -222,7 +222,7 @@ function graphDirective(nikeService, $stateParams) {
               }
             };
           }
-          nikeService.fetch('/threatLinkingDirectly.json', params).then(success => {
+          spiderService.fetch('/threatLinkingDirectly.json', params).then(success => {
             cy.remove('*');
             cy.add(success.data);
             cy.layout({
@@ -239,6 +239,6 @@ function graphDirective(nikeService, $stateParams) {
   };
 }
 
-graphDirective.$inject = ['nikeService', '$stateParams'];
+graphDirective.$inject = ['spiderService', '$stateParams'];
 
 export default graphDirective;

@@ -1,10 +1,10 @@
 import angular from 'angular';
 
 import graphDirective from './graphDirective';
-import NikeService from './../services/nikeService';
-export const graphModule = 'nike.graph';
+import spiderService from './../services/spiderService';
+export const graphModule = 'spider.graph';
 
 angular
   .module(graphModule, [])
   .directive('graph', graphDirective)
-  .service('nikeService', NikeService);
+  .service('spiderService', spiderService);

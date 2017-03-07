@@ -1,15 +1,14 @@
 class GraphStyle {
   static getStyle(backgroundColor) {
-    this.hpeGreen = '#FF0036';
+    this.highlightRed = '#FF0036';
     this.black = '#000000';
     this.white = '#ffffff';
-    this.hpeSlate = '#425563';
-    this.hpeDarkSteel = '#5f7a76';
-    this.hpeBronze = '#80746e';
-    this.hpeGray1 = '#c6c9ca';
-    this.hpeTurquoise = '#FF0036';
-    this.hpeOrange = '#353501';
-    this.hpePurple = '#614767';
+    this.highlightSlate = '#425563';
+    this.highlightSteel = '#5f7a76';
+    this.highlightBronze = '#80746e';
+    this.gray = '#c6c9ca';
+    this.highlightBlackish = '#353501';
+    this.highlightPurple = '#614767';
 
     if (backgroundColor === undefined) {
       this.backgroundColor = '#fafafa';
@@ -44,14 +43,14 @@ class GraphStyle {
         style: {
           'width': 3,
           'curve-style': 'bezier',
-          'line-color': this.hpeGray1,
+          'line-color': this.gray,
           'target-arrow-shape': 'triangle',
-          'target-arrow-color': this.hpeGray1,
+          'target-arrow-color': this.gray,
           'label': 'data(type)',
           'font-size': 7,
           'font-family': 'Arial',
           'text-rotation': 'autorotate',
-          'color': this.hpeSlate
+          'color': this.highlightSlate
         }
       },
       {
@@ -68,7 +67,7 @@ class GraphStyle {
         style: {
           'width': 39,
           'label': 'data(properties.username)',
-          'color': this.hpePurple,
+          'color': this.highlightPurple,
           'background-image': '/app/icons/person-purple.svg'
         }
       },
@@ -77,7 +76,7 @@ class GraphStyle {
         style: {
           'width': 39,
           'label': 'data(properties.username)',
-          'color': this.hpeBronze,
+          'color': this.highlightBronze,
           'background-image': '/app/icons/person-bronze.svg'
         }
       },
@@ -93,10 +92,10 @@ class GraphStyle {
       {
         selector: '[type = \'Threat\']',
         style: {
-          'background-color': this.hpeOrange,
+          'background-color': this.highlightBlackish,
           'width': 40,
           'height': 40,
-          'text-outline-color': this.hpeOrange,
+          'text-outline-color': this.highlightBlackish,
           'text-outline-width': 1,
           'text-outline-opacity': 1
         }
@@ -105,13 +104,13 @@ class GraphStyle {
         selector: '[type = \'Entity\'][threatened]',
         style: {
           'background-image': '/app/icons/server-black.png',
-          'color': this.hpeOrange
+          'color': this.highlightBlackish
         }
       },
       {
         selector: '[type = \'Entity\'][requested]',
         style: {
-          'color': this.hpeTurquoise,
+          'color': this.highlightRed,
           'background-image': '/app/icons/server-red.png'
         }
       }

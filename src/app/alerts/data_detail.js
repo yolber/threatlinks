@@ -1,7 +1,7 @@
 'use strict';
 
-var a;
 
+var a;
 
 var rest_queries= "retrieveRawDNSQueries";
 var rest_replies = "retrieveRawDNSReplies";
@@ -18,7 +18,7 @@ var threatChart = dc.rowChart("#threat-chart");
 // Various formatters.
 var formatNumber = d3.format(",d"),
     formatChange = d3.format("+,d"),
-    formatDate = d3.time.format.utc("%B %d, %Y"),
+   formatDate = d3.time.format.utc("%B %d, %Y"),
     //formatTime = d3.time.format("%I:%M:%S %p"),
     formatTime = d3.time.format("%H:%M:%S"),
     formatTimestamp_other = d3.time.format("%Y\/%m\/%d %H:%M:%S"),
@@ -32,9 +32,10 @@ var sourceType = "srcIP";
 
 var max_records = 5000;  //var number_records = 5000;
 
-var timeZone = settings.timeZone;
+var timeZone = 'UTC';
 
 var myLoader = loader({width: 960, height: 500, container: "#loader_container", id: "loader"});
+
 
 $("#alert-id").hide();
 $("#timezone-button").hide();
@@ -84,11 +85,11 @@ function render_details (src, start, end, _dataType, _filters, _alertType, srcTy
 
     dataType = _dataType;
 
-    if (_dataType == "queries") {
+    /*if (_dataType == "queries") {
         
         var urlCount = build_url(rest_queries, period + extraParam + "&OperationType=count");
     }
-    else var urlCount = build_url(rest_replies, period + extraParam + "&OperationType=count");
+    else var urlCount = build_url(rest_replies, period + extraParam + "&OperationType=count"); 
 
 
     d3.json(urlCount, function(error, number_records) {
@@ -113,10 +114,11 @@ function render_details (src, start, end, _dataType, _filters, _alertType, srcTy
                 
         }
 
-        else $("#nrRecords").html("   Total records: " + number_records.count +"; pages: 1");
+        else $("#nrRecords").html("   Total records: " + number_records.count +"; pages: 1"); */
 
+        $("#nrRecords").html("   Total records: " + max_records +"; pages: 1");
         get_details(1);
-    });
+    //});
 
 }
 
@@ -143,10 +145,11 @@ function get_details (page_num) {
 
     var target = document.getElementById('loader_container');
 
-    if (dataType == "queries") var urlRetrieve = build_url(rest_queries, period + extraParam + "&OperationType=retrieve" + "&PageNum=" + page_num);
+    //if (dataType == "queries") var urlRetrieve = build_url(rest_queries, period + extraParam + "&OperationType=retrieve" + "&PageNum=" + page_num);
     
-    else var urlRetrieve = build_url(rest_replies, period + extraParam + "&OperationType=retrieve" + "&PageNum=" + page_num);
+    //else var urlRetrieve = build_url(rest_replies, period + extraParam + "&OperationType=retrieve" + "&PageNum=" + page_num);
 
+    var urlRetrieve = 'app/data/' + rest_replies +'.json';
 
     d3.json(urlRetrieve, function(error, data) {
 
@@ -245,10 +248,12 @@ function render_data(_timezone, _data) {
 
         d.timestamp = d.timestamp.split('.')[0]; 
 
+        var settingsTimeZone = 'UTC';
 
-        if (timeZone == settings.timeZone) d["timestampInTimeZone"] = moment.tz(d.timestamp, settings.timeZone);
+
+        if (timeZone == settingsTimeZone) d["timestampInTimeZone"] = moment.tz(d.timestamp, settingsTimeZone);
         else {
-            if (d.timestampInTimeZone == undefined) d["timestampInTimeZone"] = moment.tz(d.timestamp, settings.timeZone);
+            if (d.timestampInTimeZone == undefined) d["timestampInTimeZone"] = moment.tz(d.timestamp, settingsTimeZone);
             d.timestampInTimeZone = d.timestampInTimeZone.tz(timeZone); 
         }
 
@@ -507,7 +512,7 @@ function render_data(_timezone, _data) {
     } else {*/
     
 
-        if (timeZone != settings.timeZone) {
+        if (timeZone != 'UTC') {
 
             var orginal_time_start = moment.tz(start, 'UTC'); var orginal_time_end = moment.tz(end, 'UTC');
 
@@ -651,7 +656,7 @@ function render_data(_timezone, _data) {
         $("#dga-chart").hide();
     }
 
-    if (is_controlled) {
+    /*if (is_controlled) {
         $("#domain-chart").addClass("dark_diagram");
         $("#category-chart").addClass("dark_diagram");
         $("#hour-chart").addClass("dark_diagram");
@@ -661,10 +666,10 @@ function render_data(_timezone, _data) {
         $("#dga-chart").addClass("dark_diagram");
 
     }
-    else {
+    else { */
         $("#alert-id").show();
         $("#timezone-button").show();
-    }
+    //}
 
     //console.log("filters are: " + filters);
 

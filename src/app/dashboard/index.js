@@ -8,7 +8,7 @@ import Phase from '../services/phase.js';
 import sidebarDirective from './sidebarDirective';
 import angularMaterial from 'angular-material';
 
-export const dashboardModule = 'nike.dashboard';
+export const dashboardModule = 'spider.dashboard';
 
 angular
   .module(dashboardModule, [timelineModule, angularMaterial])

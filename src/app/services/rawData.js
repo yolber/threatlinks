@@ -1,6 +1,6 @@
-import NikeService from './nikeService';
+import spiderService from './spiderService';
 
-class RawData extends NikeService {
+class RawData extends spiderService {
 
   getRawDNSData(entity, cb) {
     this.$http.get(`${this.prefix}/DNS`, {

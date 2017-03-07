@@ -4,7 +4,7 @@ import {rawData} from './rawData';
 import RawDataService from '../services/rawData.js';
 import rawDataTr from './rawDataTr';
 import simpleFilter from './simpleFilter';
-export const rawDataModule = 'nike.rawData';
+export const rawDataModule = 'spider.rawData';
 angular
   .module(rawDataModule, [])
   .component('rawData', rawData)

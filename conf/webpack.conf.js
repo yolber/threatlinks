@@ -40,6 +40,10 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({ 
+        dc: 'dc',
+        d3: 'd3'
+    }),
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html'),
       inject: true
@@ -52,5 +56,8 @@ module.exports = {
     path: path.join(process.cwd(), conf.paths.tmp),
     filename: 'index.js'
   },
-  entry: `./${conf.path.src('index')}`
+  entry: {
+    pageMain: `./${conf.path.src('index')}`
+    //pageAlert: `./${conf.path.src('detail')}`
+  }
 };
