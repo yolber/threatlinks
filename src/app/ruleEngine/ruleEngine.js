@@ -7,7 +7,7 @@ class ruleEngineController {
     this.$state = $state;
     this.passphrase = '';
     this.resize();
-    this.showLoginPrompt();
+    //this.showLoginPrompt();
 
     window.addEventListener('resize', this.resize);
   }
@@ -102,7 +102,7 @@ class ruleEngineController {
     return false;
   }
 
-  showLoginPrompt() {
+  /*showLoginPrompt() {
     if (this.ruleEngineService.isCookieAvailable('microAnalyticsPassphrase')) {
       this.passphrase = this.ruleEngineService.getCookie('microAnalyticsPassphrase');
       this.initializePage();
@@ -111,7 +111,7 @@ class ruleEngineController {
 
     this.dialogService.show({
       controller: DialogController,
-      templateUrl: 'app/ruleEngine/passwordPrompt.html',
+      templateUrl: 'app/ruleEngine/passwordPrompt.hml',
       clickOutsideToClose: true
     })
       .then(username => {
@@ -127,7 +127,7 @@ class ruleEngineController {
         this.ruleEngineService.setCookie('microAnalyticsPassphrase', this.passphrase);
         this.initializePage();
       }, () => {});
-  }
+  }*/
 
   executeRules() {
     let month = this.scopeService.executionDate.getMonth() + 1;
