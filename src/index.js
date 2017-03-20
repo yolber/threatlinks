@@ -95,7 +95,3 @@ angular
   .filter('displayNames', displayNamesFilter);
 
 config.$inject = ['$stateProvider', '$urlRouterProvider', '$mdDateLocaleProvider'];
-
-
-
-

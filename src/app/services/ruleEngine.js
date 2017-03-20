@@ -3,7 +3,7 @@ class RuleEngine {
     this.httpService = $http;
     this.scopeService = $scope;
     //this.rootURL = 'http://threataware-as.net:8080/AnalyticsEngine/AnalyticsServices/API/';
-    this.rootURL = 'http://localhost:3000/AnalyticsEngine/AnalyticsServices/API/';
+    this.rootURL = '/app/data/';
   }
 
   /*
@@ -12,8 +12,8 @@ class RuleEngine {
   loadModules(passphrase) {
     return this.httpService({
       method: 'GET',
-      url: `${this.rootURL}microAnalytics`,
-      headers: {Authorization: `basic ${passphrase}`}
+      url: `${this.rootURL}microAnalytics.json`
+      //headers: {Authorization: `basic ${passphrase}`}
     });
   }
 

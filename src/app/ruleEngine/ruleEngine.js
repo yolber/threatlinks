@@ -7,7 +7,7 @@ class ruleEngineController {
     this.$state = $state;
     this.passphrase = '';
     this.resize();
-    //this.showLoginPrompt();
+    this.showLoginPrompt();
 
     window.addEventListener('resize', this.resize);
   }
@@ -102,8 +102,8 @@ class ruleEngineController {
     return false;
   }
 
-  /*showLoginPrompt() {
-    if (this.ruleEngineService.isCookieAvailable('microAnalyticsPassphrase')) {
+  showLoginPrompt() {
+    /*if (this.ruleEngineService.isCookieAvailable('microAnalyticsPassphrase')) {
       this.passphrase = this.ruleEngineService.getCookie('microAnalyticsPassphrase');
       this.initializePage();
       return;
@@ -126,8 +126,10 @@ class ruleEngineController {
         this.passphrase = window.btoa(username);
         this.ruleEngineService.setCookie('microAnalyticsPassphrase', this.passphrase);
         this.initializePage();
-      }, () => {});
-  }*/
+      }, () => {});*/
+      this.initializePage();
+      return;
+  }
 
   executeRules() {
     let month = this.scopeService.executionDate.getMonth() + 1;
