@@ -5,9 +5,9 @@ class TimelineController {
     this.phases = [];
     this.events = [];
     //this.colorCodes = ['#614767', '#425563', '#5F7A76', '#01A982', '#80746E', '#767676'];
-    this.colorCodes = ['#545454', ' #23395B', '#1F7A8C', '#A31621', '#69747C', '#DFE2CF'];
+    this.colorCodes = ['#545454', ' #23395B', '#1F7A8C', '#69747C', '#A31621', '#DFE2CF']; 
 
-   
+
     // this.colorCodes = ['#2AD2C9', '#5F7A76', '#80746E', '#425563', '#614767', '#425563', '#80746E', '#5F7A76', '#2AD2C9'];
     this.globalDispatch = $scope.$parent.dashboard.globalDispatch.bind($scope.$parent.dashboard);
     this.phaseService = phaseService;

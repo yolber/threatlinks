@@ -2,7 +2,7 @@
    color: rgba(53, 53, 53, 1);
    background-color: #dedede;
    font-size:12px;
-    
+
 }
 
 .static-header {
@@ -19,21 +19,27 @@
 #spider {
   background: url('/app/icons/alerts.png') no-repeat -73px -179px;
   width: 58px;
-  height: 58px; 
+  height: 58px;
   float: left;
-  
+
 }
 
 .title {
     background-image: url(/app/icons/spider_web_smaller.png);
     color: rgba(183, 178, 178, 1);
     width:230px;
-    height: 58px; 
+    height: 58px;
     font-size: 30px;
     font-weight: bold;
     float: left;
     padding-top: 15px;
     padding-left: 35px;
+}
+
+.page-header{
+    text-align: center;
+    font-size:18px;
+    border-bottom: 1px #353501 solid;
 }
 
 .panel {
@@ -73,9 +79,9 @@
 }
 
 .panel-body{
-   
+
     font-size: 14px !important;
-  
+
 }
 
 .dc-chart g.row text {
