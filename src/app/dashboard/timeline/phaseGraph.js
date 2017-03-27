@@ -17,13 +17,16 @@ function phaseGraph() {
     events = Object.keys(events).map(k => {
       const amount = Math.log(events[k]) + 1;
       max = max < amount ? amount : max;
+      //console.log(new Date(parseInt(k, 10)));
       return {
         timestamp: parseInt(k, 10),
         amount
       };
     });
 
+  //  max += 1;
 
+   console.log(startDate);
 
     const x = d3.scaleUtc()
       .domain([startDate, endDate])
@@ -51,6 +54,7 @@ function phaseGraph() {
     barChart.select(".xaxis")
       .call(xAxis);
 
+
     const bars = barChart.selectAll('.rectangle')
       .data(events, d => {
         return d;
@@ -59,7 +63,7 @@ function phaseGraph() {
     bars.enter()
       .append('rect')
       .attr('class', 'rectangle')
-      .attr('x', d => x(d.timestamp))
+      .attr('x', d => {console.log(x(d.timestamp));return x(d.timestamp);})
       .attr('y', d => y(d.amount))
       .attr('width', 10)
       .attr('height', d => height - y(d.amount) - scaleHeight)
@@ -76,7 +80,7 @@ function phaseGraph() {
     link: (scope, element) => {
       const state = scope.phase.state;
       const color = scope.color;
-      const width = scope.width - config.margin;
+      const width = scope.width - 5;
       const height = document.querySelector('main').clientHeight * config.timeline.height;
       const scaleHeight = 20;
       const barChart = d3.select(element[0])

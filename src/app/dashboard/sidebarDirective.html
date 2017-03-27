@@ -7,13 +7,13 @@
     </md-switch>
 </div>
 -->
-    
+
         <!--
         <div class="search container-padding">
           <input ng-model="search" placeholder="Search ..."/>
         </div>-->
-       
-        <div class="segment panel" ng-repeat="segment in sidebar.segments" style ="height:425px;">
+
+        <div class="segment panel" ng-repeat="segment in sidebar.segments" style ="height:507px;">
             <div class="head panel-header" style="padding-left: 12px;">
                 {{segment.name | displayNames}}
             </div>
@@ -23,13 +23,13 @@
             <div class="panel-subtitle">
             Select circle to navigate to Entity Investigation.
             </div>
-            
+
             <div class="body">
                 <div class="element" ng-repeat="element in segment.elements | filter:search" ng-class="{active: element.toggled}" ng-click="sidebar.elementClick(segment.name, element)" ng-mouseover="sidebar.elementMouseover(segment.name, element.id)" ng-mouseout="sidebar.elementMouseout()">
                     {{element.id | displayNames}}
                     <!--
                     <span ng-show="segment.name === 'entityId'" class="link" ui-sref="entity({entityId: element.id})"></span>-->
-                    <div style="text-align: right;"> 
+                    <div style="text-align: right;">
                         <div class="number-circle" ng-style="element.borderStyle" ng-show="segment.name === 'entityId'" ui-sref="entity({entityId: element.id})">{{element.count >= 0 ? element.count : 'N/A'}}</div>
                     </div>
                 </div>
@@ -37,15 +37,5 @@
             <md-switch md-no-ink ng-model="switch" ng-change="sidebar.toggleRemove()" aria-label="Remove Elements" style="font-size:10px">
              Remove filtered elements
             </md-switch>
-            
+
         </div>
-        
-        
-
-
-
-        
-
-    
-
-

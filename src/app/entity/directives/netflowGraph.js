@@ -47,6 +47,7 @@ function featureGraph() {
           gt: d[0].timestamp - 3600,
           lt: d[0].timestamp + 3600
         })[0];
+        //console.log(d[0].timestamp);
         return c ? x(new Date(c.timestamp)) : x(new Date(d[0].timestamp));
       })
       .attr('cy', d => {
@@ -80,9 +81,11 @@ function featureGraph() {
         left: 70,
         bottom: 20
       };
-      let x = d3.scaleTime()
-        .domain([scope.$parent.entity.startDate, scope.$parent.entity.endDate])
-        .range([axesSpace.left + 1, width - axesSpace.left]);
+      //console.log(scope.$parent.entity.endDate);
+
+      let x = d3.scaleUtc()
+        .range([axesSpace.left, width - axesSpace.left]);
+
       let y = d3.scaleLinear()
         .domain([0, scope.max])
         .range([height - axesSpace.bottom, ((height - axesSpace.bottom) * 0.1)]);
@@ -147,6 +150,8 @@ function featureGraph() {
 
       scope.$watch('$parent.entity.startDate', startDate => {
         if (startDate) {
+          //console.log(scope.$parent.entity.startDate);
+          //console.log(scope.$parent.entity.endDate);
           clean();
           x = x.domain([startDate, scope.$parent.entity.endDate]).range([axesSpace.left + 1, width - axesSpace.left]);
           update(data, x, y, alerts);

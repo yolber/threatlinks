@@ -33,7 +33,8 @@ class NetflowController {
         } else {
           let max = -Infinity;
           data.forEach(e => {
-            e.timestamp *= 1000;
+            // e.timestamp *= 1000;
+            e.timestamp = (new Date(e.timestamp)).getTime();
             max = e.number > max ? e.number : max;
           });
           this.max = max;

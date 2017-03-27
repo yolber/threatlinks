@@ -1,6 +1,6 @@
 
-    
-    <div class="panel row" id="attack-phases" style ="height:425px;">
+
+    <div class="panel row" id="attack-phases" style ="height:507px;">
 
     	<div class="panel-header" style="padding-left: 12px;">
         	<span>Threats across Attack Phases</span>
@@ -9,15 +9,24 @@
         	<span> Hover on type to hightlight specific alert</span>
     	</div>
 
+      <phase ng-repeat="phase in timeline.phases" name="phase.name" phase-id="phase.id - 1" events="timeline.events" color="timeline.colorCodes[phase.id - 1]" width="timeline.phaseWidth" height="timeline.height" style="width:{{100/timeline.phases.length}}%">
+      </phase>
 
-        <phase ng-repeat="phase in timeline.phases" name="phase.name" phase-id="phase.id - 1" events="timeline.events" color="timeline.colorCodes[phase.id - 1]" width="timeline.phaseWidth" height="timeline.height" style="width:{{100/timeline.phases.length}}%"> 
-        </phase>
-        	
-        
+      <div id="timeseries" style="padding-top: 10px; margin-left:5px; height:160px;">
+
+        <div class="panel-subtitle">
+            <span> Select timeperiod to filter specific alerts.</span>
+        </div>
+        <timeseries events="timeline.events" width="timeline.width"></timeseries>
+
+      </div>
+
+
+
 
     </div>
 
-    
+
 
     <!--<div class ="row">
 
@@ -27,32 +36,18 @@
                 <span>Watch list clients on the map</span>
             </div>
             <div class="panel-subtitle">
-                
+
             </div>
 
             <leaflet height="345px"></leaflet>
     </div>
     </div>-->
 
-    <div class="panel row" id="timeseries" style="padding-top: 10px; height:425px;">
+    <!--<div class="panel row" id="timeseries" style="padding-top: 10px; height:170px;">
 
-	    <div class="panel-header" style="padding-left: 12px;">
-	        	<span>Threats Timeline</span>
-	    	</div>
-	    	<div class="panel-subtitle">
-	        	<span> Select timeperiod to filter specific alerts.</span>
-	    	</div>
-	    <timeseries events="timeline.events" width="timeline.width" "></timeseries>
-    </div>
+      <div class="panel-subtitle">
+          <span> Select timeperiod to filter specific alerts.</span>
+      </div>
+      <timeseries events="timeline.events" width="timeline.width"></timeseries>
 
-    <!--<div class="panel row" style="padding-top: 10px; padding-bottom: 15px;height:425px;">
-
-        <div class="panel-header" style="padding-left: 12px;">
-                <span>Threat Linking</span>
-            </div>
-            <div class="panel-subtitle">
-                <span>Links between alerted entities.</span>
-            </div>
-        <linking-graph></linking-graph> 
-     </div>-->
-   
+    </div>-->

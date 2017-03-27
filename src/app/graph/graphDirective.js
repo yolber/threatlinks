@@ -208,6 +208,7 @@ function graphDirective(spiderService, $stateParams) {
           const timestampLocal = Math.floor(new Date(myScope.endDate).getTime() / 1000);
           const timestampUTC = timestampLocal - new Date().getTimezoneOffset() * 60;
           let params;
+          let JSONfile = '/threatLinkingDirectly.json';
           if ($scope.hasEntity) {
             params = {
               addParams: {
@@ -221,8 +222,9 @@ function graphDirective(spiderService, $stateParams) {
                 timestamp: timestampUTC
               }
             };
+            JSONfile = '/threatLinkingDirectly_all.json';
           }
-          spiderService.fetch('/threatLinkingDirectly.json', params).then(success => {
+          spiderService.fetch(JSONfile, params).then(success => {
             cy.remove('*');
             cy.add(success.data);
             cy.layout({

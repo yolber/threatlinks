@@ -2,7 +2,7 @@ const displayNames = {
   // State Titles
   'dashboard': 'Dashboard',
   'entity': 'Entity Investigation',
-  'rule-engine': 'Micro Analytics Manager',
+  'rule-engine': 'Analytics Manager',
   'graph': 'Threat Linking',
   'raw-data': 'Event Data',
   // Threat Related

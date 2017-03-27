@@ -39,12 +39,15 @@ import {
 } from './app/footer';
 
 import displayNamesFilter from './app/utils/displayNamesFilter';
-//import './app/alerts/alert_detail.js';
+
+//import './graphs.html';
+
+//import './app/dnsgraphs/graphs.js';
 
 import '!style!css!sass!./index.scss';
 import 'angular-material/angular-material.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import 'dc/dc.css';
+//import 'dc/dc.css';
 //import 'leaflet/dist/leaflet.css';
 
 //import './app/alerts.html';
@@ -71,12 +74,12 @@ const config = ($stateProvider, $urlRouterProvider, $mdDateLocaleProvider) => {
       templateUrl: 'app/ruleEngine.template.html'
     })
     .state('graph', {
-      url: '/graph',
+      url: '/linking',
       templateUrl: 'app/graph.template.html'
-    //})
-    //.state('Alert Details', {
-    //  url: '/alert',
-    //  templateUrl: 'app/alerts.html'
+    /*})
+    .state('DNS graphs', {
+      url: '/dnsgraphs',
+      templateUrl: 'dnsgraphs.html'*/
     });
 
   $mdDateLocaleProvider.formatDate = date => {

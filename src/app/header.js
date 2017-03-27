@@ -61,6 +61,7 @@ class HeaderController {
     const paramsRegex = /.*\{(.+)\}/;
 
     for (const state of allStates) {
+      if (state.name != 'rule-engine') {
       if (state !== currentState && !state.abstract) {
         const params = state.url.match(paramsRegex);
         states.push({
@@ -68,6 +69,7 @@ class HeaderController {
           param: params ? params[1] : null
         });
       }
+    }
     }
     return states.sort((a, b) => a.name > b.name);
   }

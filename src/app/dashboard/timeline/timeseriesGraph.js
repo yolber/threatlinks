@@ -159,7 +159,7 @@ function phaseGraph() {
       // const height = (document.querySelector('main').clientHeight *
       //  (1 - config.timeline.height - config.timeline.title - config.metadata.height)) -
       // margin.top - margin.bottom - config.margin;
-      const height = document.querySelector('#timeseries').clientHeight - 80;
+      const height = document.querySelector('#timeseries').clientHeight - 30;
       const svg = d3.select(element[0])
       .append('svg')
       .attr('width', width + margin.right + margin.left)
