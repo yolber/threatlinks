@@ -32,25 +32,25 @@ class Phase extends spiderService {
           const o = Object.assign({}, e, {
             ThreatPhase: phase
           });
-          if (o.analyticsID === 'Minority Report') {
-            const list = o.analyticsType.replace('Minority Report - Feature:', '').split(' - ');
+          if (o.analyticsID === 'Peer-based Anomaly') {
+            const list = o.analyticsType.replace('Peer-based Anomaly - Feature:', '').split(' - ');
             const type = list[0].split(', Score:');
             o.features = {
               name: type[0],
               score: type[1],
               description: list[1]
             };
-            o.analyticsType = 'Minority Report';
+            o.analyticsType = 'Peer-based Anomaly';
           }
-          if (o.analyticsID === 'Temporal Minority Report') {
-            const list1 = o.analyticsType.replace('Temporal Minority Report - Feature:', '').split(' - ');
+          if (o.analyticsID === 'Temporal Anomaly') {
+            const list1 = o.analyticsType.replace('Temporal Anomaly - Feature:', '').split(' - ');
             const type1 = list1[0].split(', Score:');
             o.features = {
               name: type1[0],
               score: type1[1],
               description: list1[1]
             };
-            o.analyticsType = 'Temporal Minority Report';
+            o.analyticsType = 'Temporal Anomaly';
           }
           events.push(o);
         });

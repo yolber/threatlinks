@@ -8,7 +8,7 @@ function featureGraph() {
     },
     link: (scope, element) => {
       const main = document.querySelector('main');
-      const height = 75;
+      const height = 60;
       const width = main.clientWidth * 0.2;
       const barChart = d3.select(element[0])
         .append('svg')

@@ -20,10 +20,10 @@ export default {
   ],
   netflow: {
     interval: 3600, // sec
-    graphHeight: 250
+    graphHeight: 270
   },
   similarity: {
     graphHeight: 265
   },
-  graphHeight: 425
+  graphHeight: 350
 };

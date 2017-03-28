@@ -18,8 +18,8 @@ const displayNames = {
   'BadClient-RGDNForbiddenBigramsCallsNXDOMAIN': 'Forbidden Bigrams Calls',
   'BadClient-SrcipQueryingLargeSetOfResolvingLongDomainNames': 'Large Set of Resolving Long Domain Names',
   'Abnormal Network Connections': "Abnormal Network Conn",
-  'Minority Report': 'Peer Based Anomalous Behaviour',
-  'Temporal Minority Report': 'Historical Anomalous Behaviour',
+  //'Peer-based Anomaly': 'Peer Based Anomalous Behaviour',
+  //'Temporal Anomly': 'Historical Anomalous Behaviour',
   // Features
   'numEvents_DNS': 'Total DNS Requests',
   'numRes_DNS': 'Resolving DNS Requests',

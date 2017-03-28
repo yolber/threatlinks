@@ -50,7 +50,7 @@ class ThreatListController {
             a = a[this.sortBy];
             b = b[this.sortBy];
             if (a.analyticsId === b.analyticsId) {
-              if (a.analyticsId === 'Minority Report' || a.analyticsId === 'Temporal Minority Report') {
+              if (a.analyticsId === 'Peer-based Anomaly' || a.analyticsId === 'Temporal Anomaly') {
                 if (a.features.name === b.features.name) {
                   return b.features.score - a.features.score;
                 } else {

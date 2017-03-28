@@ -13,7 +13,7 @@ const simpleFilter = $sce => (input, _filter) => {
         case 'displayNames':
           return displayNames(input);
         case 'feature':
-          if (input.analyticsId === 'Minority Report' || input.analyticsId === 'Temporal Minority Report') {
+          if (input.analyticsId === 'Peer-based Anomaly' || input.analyticsId === 'Temporal Anomaly') {
             return `${displayNames(input.features.name)} - Score: ${Math.round(input.features.score * 100)}%`;
           } else {
             return displayNames(input.analyticsId);

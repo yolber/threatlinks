@@ -2,7 +2,7 @@
 	<div class="static-header row">
     	<div class="header-title">
 			<div id="spider"></div>
-			<div class="title">ThreatLinks</div>
+			<div class="title">Threat Links</div>
 		</div>
 
 
@@ -14,7 +14,7 @@
   		<span class="glyphicon glyphicon-th" aria-hidden="true"></span> Analytics Store
 		</button>
 
-    </div>
+  </div>
 
 
 
@@ -41,13 +41,9 @@
 
 
 	<div class="row" style="padding-top: 6px;padding-bottom: 20px;height:73px">
-
-
-
 	    <div class="col-md-2" >
 		    	<!--<span class="arrow transform white" ng-click="header.showMenu()"></span>-->
-
-		    	<div id="nav-icon1" style="margin-left: 5px;" ng-click="header.showMenu()">
+		    <div id="nav-icon1" style="margin-left: 5px;" ng-click="header.showMenu()">
 				  <span></span>
 				  <span></span>
 				  <span></span>
@@ -60,25 +56,23 @@
 				                <input ng-show="route.param" ng-model="header.inputParams[route.param]" ng-class="{error: header.error[route.param]}" placeholder="{{route.param | displayNames:header.displayNamesConfig}}"  ng-keydown="header.error[route.param] = false;" ng-keyup="$event.keyCode == 13 && header.routeTo(route.name, route.param, header.inputParams[route.param])">
 				            </div>
 			        	</div>
-			    </div>
+			   </div>
 			</div>
 			<div class="col-md-6 " >
+				<div id="sub-title">
+					{{header.title | displayNames}}
+	        <span ng-repeat="param in header.params">{{param}}</span>
+      	</div>
+      </div>
 
-			<div id="sub-title">
-
-				{{header.title | displayNames}}
-	        	<span ng-repeat="param in header.params">{{param}}</span>
-        	</div>
-        	</div>
-
-		<div class= "col-md-4">
+			<div class= "col-md-4">
 		    <div class="date-selection">
-
 		        <md-datepicker ng-model="$parent.startDate" md-min-date="$parent.backday" md-max-date="$parent.endDate" ng-show="header.date === 2"></md-datepicker>
 		        <span style="margin-left:12px;" ng-show="header.date === 2">-</span>
 		        <md-datepicker ng-model="$parent.endDate" md-min-date="$parent.startDate" md-max-date="$parent.today" ng-show="header.date === 2"></md-datepicker>
 		        <md-datepicker ng-model="$parent.endDate" ng-show="header.date === 1"></md-datepicker>
 		    </div>
-		</div>
+			</div>
 	</div>
+
 </header>
